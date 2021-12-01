@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.function.UnaryOperator;
 
 public class DemoData {
 	public static List<Person> createDemoData() {
@@ -16,11 +17,12 @@ public class DemoData {
 
 	public static List<String> createDemoNames() {
 		final List<String> names = new ArrayList<>();
-		names.add("Max");
+		names.add("   Max");
 		names.add(""); // Leereintrag
-		names.add("Andy");
+		names.add("  Andy  ");
 		names.add(" "); // potenziell auch ein "Leereintrag"
 		names.add("Stefan");
+		names.add(null);
 		return names;
 	}
 
@@ -34,5 +36,10 @@ public class DemoData {
 				it.remove();
 			}
 		}
+	}
+	
+	public static void printResult(final String text, final String value, 
+									final UnaryOperator<String> op) {
+			System.out.println(text + ": ’" + value + "’ -> ’" + op.apply(value) + "’");
 	}
 }
